@@ -85,10 +85,10 @@ class CarInterface(CarInterfaceBase):
       ret.minEnableSpeed = 32 * CV.MPH_TO_MS
     elif candidate == CAR.GENESIS:
       ret.lateralTuning.init('indi')
-      ret.lateralTuning.indi.innerLoopGain = 3.0  #stock is 3.0 - outer and inner are gains. Higher values = more steering
+      ret.lateralTuning.indi.innerLoopGain = 3.5  #stock is 3.0 - outer and inner are gains. Higher values = more steering
       ret.lateralTuning.indi.outerLoopGain = 2.0  #stock is 2.0 - outer and inner are gains. Higher values = more steering
       ret.lateralTuning.indi.timeConstant = 1.5  #Stock is 1.5 - timeconstant is smoothing. Higher values == more smoothing but less response
-      ret.lateralTuning.indi.actuatorEffectiveness = 1.0  #Stock is 1.0 - actuatoreffectiveness is how much it steers. Lower values == more steering 
+      ret.lateralTuning.indi.actuatorEffectiveness = 1.2  #Stock is 1.0 - actuatoreffectiveness is how much it steers. Lower values == more steering 
       ret.mass = 2140. + STD_CARGO_KG
       # ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
       # ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.15], [0.06]]
