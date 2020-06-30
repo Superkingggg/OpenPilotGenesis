@@ -48,7 +48,7 @@ class CarInterface(CarInterfaceBase):
     ret.safetyModel = car.CarParams.SafetyModel.hyundai
     ret.enableCruise = True  # stock acc
 
-    ret.steerActuatorDelay = 0.15  # Default delay
+    ret.steerActuatorDelay = 0.4  # Default delay 0.15
     ret.steerRateCost = 0.45
     ret.steerLimitTimer = 0.8
     tire_stiffness_factor = 0.7
@@ -85,7 +85,7 @@ class CarInterface(CarInterfaceBase):
       ret.minEnableSpeed = 32 * CV.MPH_TO_MS
     elif candidate == CAR.GENESIS:
       ret.lateralTuning.init('indi')
-      ret.lateralTuning.indi.innerLoopGain = 3.5  #stock is 3.0 - outer and inner are gains. Higher values = more steering
+      ret.lateralTuning.indi.innerLoopGain = 4.0  #stock is 3.0 - outer and inner are gains. Higher values = more steering
       ret.lateralTuning.indi.outerLoopGain = 2.0  #stock is 2.0 - outer and inner are gains. Higher values = more steering
       ret.lateralTuning.indi.timeConstant = 1.5  #Stock is 1.5 - timeconstant is smoothing. Higher values == more smoothing but less response
       ret.lateralTuning.indi.actuatorEffectiveness = 1.2  #Stock is 1.0 - actuatoreffectiveness is how much it steers. Lower values == more steering 
