@@ -49,8 +49,8 @@ class CarInterface(CarInterfaceBase):
     ret.enableCruise = True  # stock acc
 
     ret.steerActuatorDelay = 0.4  # Default delay 0.15
-    ret.steerRateCost = 0.45
-    ret.steerLimitTimer = 0.8
+    ret.steerRateCost = 0.5  #default is .45 but .5 is good.  Value is active in kegman file
+    ret.steerLimitTimer = 0.1  #default is 0.8.  0.1 is good
     tire_stiffness_factor = 0.7
 
     ret.minEnableSpeed = -1.   # enable is done by stock ACC, so ignore this
@@ -85,16 +85,16 @@ class CarInterface(CarInterfaceBase):
       ret.minEnableSpeed = 32 * CV.MPH_TO_MS
     elif candidate == CAR.GENESIS:
       ret.lateralTuning.init('indi')
-      ret.lateralTuning.indi.innerLoopGain = 4.0  #stock is 3.0 - outer and inner are gains. Higher values = more steering
-      ret.lateralTuning.indi.outerLoopGain = 2.0  #stock is 2.0 - outer and inner are gains. Higher values = more steering
-      ret.lateralTuning.indi.timeConstant = 1.5  #Stock is 1.5 - timeconstant is smoothing. Higher values == more smoothing but less response
-      ret.lateralTuning.indi.actuatorEffectiveness = 1.2  #Stock is 1.0 - actuatoreffectiveness is how much it steers. Lower values == more steering 
+      ret.lateralTuning.indi.innerLoopGain = 4.0  #stock is 3.0 but 4.0 seems good
+      ret.lateralTuning.indi.outerLoopGain = 2.5  #stock is 2.0.  Trying out 2.5
+      ret.lateralTuning.indi.timeConstant = 1.3  #Stock is 1.5.  1.3 is good
+      ret.lateralTuning.indi.actuatorEffectiveness = 1.4  #Stock is 1.0 1.4 is good 
       ret.mass = 2140. + STD_CARGO_KG
       # ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
       # ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.15], [0.06]]
       # ret.lateralTuning.pid.kf = 0.00005
       ret.wheelbase = 3.01
-      ret.steerRatio = 15
+      ret.steerRatio = 15  #active value is in Kegman file
       ret.minSteerSpeed = 57 * CV.KPH_TO_MS
       ret.minEnableSpeed = 15 * CV.KPH_TO_MS
     elif candidate in [CAR.GENESIS_G90, CAR.GENESIS_G80]:
