@@ -11,7 +11,7 @@ VisualAlert = car.CarControl.HUDControl.VisualAlert
 class SteerLimitParams:
   STEER_MAX = 408   # 409 is the max, 255 is stock
   STEER_DELTA_UP = 2
-  STEER_DELTA_DOWN = 2  #3 is good, trying 2
+  STEER_DELTA_DOWN = 3  #3 is good, 
   STEER_DRIVER_ALLOWANCE = 50
   STEER_DRIVER_MULTIPLIER = 2
   STEER_DRIVER_FACTOR = 1
@@ -79,7 +79,7 @@ class CarController():
     self.turning_signal_timer = 0
     self.lkas_button = 1
     self.lkas_button_last = 0
-    self.longcontrol = 1 #TODO: make auto
+    self.longcontrol = 0 #TODO: make auto
 
   def update(self, enabled, CS, frame, actuators, pcm_cancel_cmd, visual_alert,
               left_line, right_line, left_lane_depart, right_lane_depart):
