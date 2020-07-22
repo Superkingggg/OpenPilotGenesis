@@ -85,7 +85,7 @@ class CarInterface(CarInterfaceBase):
       ret.minEnableSpeed = 32 * CV.MPH_TO_MS
     elif candidate == CAR.GENESIS:
       ret.lateralTuning.init('indi')
-      ret.lateralTuning.indi.innerLoopGain = 3.7  #stock is 3.0 but 4.0 seems good
+      ret.lateralTuning.indi.innerLoopGain = 3.6  #stock is 3.0 but 4.0 seems good
       ret.lateralTuning.indi.outerLoopGain = 2.3  #stock is 2.0.  Trying out 2.5
       ret.lateralTuning.indi.timeConstant = 1.3  #Stock is 1.5.  1.3 is good
       ret.lateralTuning.indi.actuatorEffectiveness = 1.4  #Stock is 1.0 1.4 is good 
