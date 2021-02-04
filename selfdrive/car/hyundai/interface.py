@@ -34,19 +34,26 @@ class CarInterface(CarInterfaceBase):
     # Most Hyundai car ports are community features for now
     ret.communityFeature = candidate not in [CAR.SONATA, CAR.PALISADE]
 
-    ret.steerActuatorDelay = 0.1  # Default delay
+    ret.steerActuatorDelay = 0.4  # Default delay
     ret.steerRateCost = 0.5
-    ret.steerLimitTimer = 0.8
+    ret.steerLimitTimer = 0.1
     tire_stiffness_factor = 1.
 
     # genesis
     if candidate == CAR.GENESIS:
-      ret.mass = 2060. + STD_CARGO_KG
+      ret.lateralTuning.init('indi')
+      ret.lateralTuning.indi.innerLoopGain = 3.1  #stock is 3.0 but 4.0 seems good
+      ret.lateralTuning.indi.outerLoopGain = 2.1  #stock is 2.0.  Trying out 2.5
+      ret.lateralTuning.indi.timeConstant = 1.4  #Stock is 1.5.  1.3 is good
+      ret.lateralTuning.indi.actuatorEffectiveness = 1.3  #Stock is 1.0 1.4 is good 
+      ret.mass = 2140. + STD_CARGO_KG
+      # ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
+      # ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.15], [0.06]]
+      # ret.lateralTuning.pid.kf = 0.00005
       ret.wheelbase = 3.01
-      ret.steerRatio = 16.5
-      ret.lateralTuning.pid.kf = 0.00005
-      ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
-      ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.16], [0.01]]
+      ret.steerRatio = 15  #active value is in Kegman file
+      ret.minSteerSpeed = 57 * CV.KPH_TO_MS
+      ret.minEnableSpeed = 15 * CV.KPH_TO_MS
     elif candidate == CAR.GENESIS_G70:
       ret.mass = 1640. + STD_CARGO_KG
       ret.wheelbase = 2.84
@@ -338,12 +345,12 @@ class CarInterface(CarInterfaceBase):
 
     if self.CC.longcontrol and self.CS.cruise_unavail:
       events.add(EventName.brakeUnavailable)
-    if abs(ret.steeringAngle) > 90. and EventName.steerTempUnavailable not in events.events:
-      events.add(EventName.steerTempUnavailable)
+    #if abs(ret.steeringAngle) > 90. and EventName.steerTempUnavailable not in events.events:
+    #  events.add(EventName.steerTempUnavailable)
     if self.low_speed_alert and not self.CS.mdps_bus:
       events.add(EventName.belowSteerSpeed)
-    if self.CC.turning_indicator_alert:
-      events.add(EventName.turningIndicatorOn)
+    #if self.CC.turning_indicator_alert:
+    #  events.add(EventName.turningIndicatorOn)
     # if self.CS.lkas_button_on != self.CS.prev_lkas_button:
       # events.add(EventName.buttonCancel)
     if self.mad_mode_enabled and not self.CC.longcontrol and EventName.pedalPressed in events.events:
