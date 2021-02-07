@@ -47,13 +47,13 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.indi.timeConstant = 1.4  #Stock is 1.5.  1.3 is good
       ret.lateralTuning.indi.actuatorEffectiveness = 1.3  #Stock is 1.0 1.4 is good 
       ret.mass = 2140. + STD_CARGO_KG
+      ret.wheelbase = 3.01
+      ret.steerRatio = 15  #active value is in Kegman file
       # ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
       # ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.15], [0.06]]
       # ret.lateralTuning.pid.kf = 0.00005
-      ret.wheelbase = 3.01
-      ret.steerRatio = 15  #active value is in Kegman file
-      ret.minSteerSpeed = 57 * CV.KPH_TO_MS
-      ret.minEnableSpeed = 15 * CV.KPH_TO_MS
+      # ret.minSteerSpeed = 57 * CV.KPH_TO_MS
+      # ret.minEnableSpeed = 15 * CV.KPH_TO_MS
     elif candidate == CAR.GENESIS_G70:
       ret.mass = 1640. + STD_CARGO_KG
       ret.wheelbase = 2.84
