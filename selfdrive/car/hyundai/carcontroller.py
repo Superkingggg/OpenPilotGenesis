@@ -112,16 +112,16 @@ class CarController():
     lkas_active = enabled and abs(CS.out.steeringAngleDeg) < CS.CP.maxSteeringAngleDeg and not spas_active
 
     # fix for Genesis hard fault at low speed
-    if CS.out.vEgo < 60 * CV.KPH_TO_MS and self.car_fingerprint == CAR.GENESIS and not CS.mdps_bus:
-      lkas_active = False
+    #if CS.out.vEgo < 60 * CV.KPH_TO_MS and self.car_fingerprint == CAR.GENESIS and not CS.mdps_bus:
+    #  lkas_active = False
 
     # Disable steering while turning blinker on and speed below 60 kph
-    if CS.out.leftBlinker or CS.out.rightBlinker:
-      self.turning_signal_timer = 100  # Disable for 1.0 Seconds after blinker turned off
-    if self.turning_indicator_alert: # set and clear by interface
-      lkas_active = 0
-    if self.turning_signal_timer > 0:
-      self.turning_signal_timer -= 1
+    #if CS.out.leftBlinker or CS.out.rightBlinker:
+    #  self.turning_signal_timer = 100  # Disable for 1.0 Seconds after blinker turned off
+    #if self.turning_indicator_alert: # set and clear by interface
+    #  lkas_active = 0
+    #if self.turning_signal_timer > 0:
+    #  self.turning_signal_timer -= 1
 
     if not lkas_active:
       apply_steer = 0
