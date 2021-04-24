@@ -95,8 +95,8 @@ class CarInterface(CarInterfaceBase):
       # ret.lateralTuning.pid.kf = 0.00005
       ret.wheelbase = 3.01
       ret.steerRatio = 15  #active value is in Kegman file
-      ret.minSteerSpeed = 57 * CV.KPH_TO_MS
-      ret.minEnableSpeed = 15 * CV.KPH_TO_MS
+      #ret.minSteerSpeed = 57 * CV.KPH_TO_MS
+      #ret.minEnableSpeed = 15 * CV.KPH_TO_MS
     elif candidate in [CAR.GENESIS_G90, CAR.GENESIS_G80]:
       ret.mass = 2200
       ret.wheelbase = 3.15
