@@ -117,8 +117,10 @@ class CarController():
     #if self.turning_signal_timer:
     #  lkas_active = 0
     #  self.turning_signal_timer -= 1
-    #if not lkas_active:
-    #  apply_steer = 0
+    
+    
+    if not lkas_active:
+      apply_steer = 0
 
     steer_req = 1 if apply_steer else 0
 
