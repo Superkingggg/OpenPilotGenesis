@@ -45,7 +45,7 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.indi.innerLoopGain = 3.5  #stock is 3.0.  3.1 is from 7.3_Kegman
       ret.lateralTuning.indi.outerLoopGain = 2.0  #stock is 2.0.  2.1 is from 7.3_Kegman
       ret.lateralTuning.indi.timeConstant = 1.4  #Stock is 1.5.  1.4 is from 7.3_Kegman
-      ret.lateralTuning.indi.actuatorEffectiveness = 2.3  #Stock is 1.0.  1.3 is from 7.3_Kegman
+      ret.lateralTuning.indi.actuatorEffectiveness = 1.3  #Stock is 1.0.  1.3 is from 7.3_Kegman
       ret.mass = 2140. + STD_CARGO_KG
       ret.wheelbase = 3.01
       ret.steerRatio = 15  #active value is in Kegman file
